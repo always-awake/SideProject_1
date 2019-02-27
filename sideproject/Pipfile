@@ -13,6 +13,7 @@ pylint-django = "*"
 
 [dev-packages]
 
+"autopep8" = "*"
 
 
 [requires]
