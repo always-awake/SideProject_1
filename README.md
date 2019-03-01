@@ -53,3 +53,7 @@
 - 마이그레이션 파일이 너무 많아질 경우, squashmigrations 명령으로 다수의 마이그레이션 파일 통합 가능
 
 ### 12 장고 Admin을 통한 데이터 관리 (2/28)
+- 실제 서비스에서는 Admin 페이지의 디폴트 경로 변경 권장
+- 'django-admin-honeypot 앱'을 통해 가짜 Admin 페이지 노출 가능
+- @admin.register(모델명) 데코레이터를 이용해 Admin 페이지에 모델 등록
+- list_display, list_display_links, search_fields 등의 속성을 이용해 Admin 페이지 커스터마이징
