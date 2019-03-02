@@ -57,3 +57,10 @@
 - 'django-admin-honeypot 앱'을 통해 가짜 Admin 페이지 노출 가능
 - @admin.register(모델명) 데코레이터를 이용해 Admin 페이지에 모델 등록
 - list_display, list_display_links, search_fields 등의 속성을 이용해 Admin 페이지 커스터마이징
+
+### 13 모델을 통한 데이터 조회(3/2)
+- SQL을 생성해주는 인터페이스
+- 순회가능한 객체 (Iterable)
+- QuerySet은 Chaining 지원
+- QuerySet을 만드는 동안에는 DB접근x -> 실제로 데이터가 필요한 시점(출력, list(), tuple(), for문과 함께 등)에 접근 (QuerySet의 Lazy한 특성)
+- OR조건으로 filter -> from django.db.models import Q / ~.filter(Q(~) | Q(~))
