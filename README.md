@@ -53,6 +53,7 @@
 - 마이그레이션 파일이 너무 많아질 경우, squashmigrations 명령으로 다수의 마이그레이션 파일 통합 가능
 
 ### 12 장고 Admin을 통한 데이터 관리 (2/28)
+<<<<<<< Updated upstream
 - 실제 서비스에서는 Admin 페이지의 디폴트 경로 변경 권장
 - 'django-admin-honeypot 앱'을 통해 가짜 Admin 페이지 노출 가능
 - @admin.register(모델명) 데코레이터를 이용해 Admin 페이지에 모델 등록
@@ -64,3 +65,6 @@
 - QuerySet은 Chaining 지원
 - QuerySet을 만드는 동안에는 DB접근x -> 실제로 데이터가 필요한 시점(출력, list(), tuple(), for문과 함께 등)에 접근 (QuerySet의 Lazy한 특성)
 - OR조건으로 filter -> from django.db.models import Q / ~.filter(Q(~) | Q(~))
+=======
+
+>>>>>>> Stashed changes
