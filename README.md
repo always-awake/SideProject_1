@@ -58,9 +58,17 @@
 - @admin.register(모델명) 데코레이터를 이용해 Admin 페이지에 모델 등록
 - list_display, list_display_links, search_fields 등의 속성을 이용해 Admin 페이지 커스터마이징
 
-### 13 모델을 통한 데이터 조회(3/2)
+### 13 모델을 통한 데이터 조회 (3/2)
 - SQL을 생성해주는 인터페이스
 - 순회가능한 객체 (Iterable)
 - QuerySet은 Chaining 지원
 - QuerySet을 만드는 동안에는 DB접근x -> 실제로 데이터가 필요한 시점(출력, list(), tuple(), for문과 함께 등)에 접근 (QuerySet의 Lazy한 특성)
 - OR조건으로 filter -> from django.db.models import Q / ~.filter(Q(~) | Q(~))
+
+### 14 모델을 통한 데이터 생성/수정/삭제 (3/2)
+- SQL이 가급적 적게 생성되는 코드 선택하기 (병목현상의 주요 요인은 데이터베이스)
+- 데이터를 일괄처리할 경우, QuerySet 함수를 사용하는 것이 좋음
+- .save() 함수: 인스턴스 pk가 존재x -> INSERT / 인스턴스 pk가 존재o -> UPDATE (장고 내부 처리)
+
+### 15 관계를 표현하는 모델 필드 (3/2)
+- ManyToManyField의 경우, blank=True 설정, 사용하는 쪽에서 ManyToManyField 선언이 가독성에 좋음 
