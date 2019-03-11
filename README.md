@@ -72,3 +72,7 @@
 
 ### 15 관계를 표현하는 모델 필드 (3/2)
 - ManyToManyField의 경우, blank=True 설정, 사용하는 쪽에서 ManyToManyField 선언이 가독성에 좋음 
+
+### 16 django-debug-toolbar를 통한 SQL 디버깅(3/11)
+- 현재 request/response에 대한 대양한 디버깅 정보를 보여줌
+- SQL Panel을 통해, 각 요청 처리 시에 발생한 SQL 내역 확인 가능 (Ajax 요청에 대한 내역은 미지원)
