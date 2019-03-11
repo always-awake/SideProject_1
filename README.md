@@ -16,7 +16,7 @@
 ### 04 VSCode 장고 디버깅 세팅하기 (2/27)
 - pipenv 실행시 디버깅: Command Palette 에서 Python: Select Interpreter 메뉴를 통해, 지정 가상환경 안의 인터프리터를 지정 -> 디버깅 진행
 
-#### 05 URLConf와 정규 표현식 (2/27)
+### 05 URLConf와 정규 표현식 (2/27)
 - 간단한 정규표현식에 대한 이해
 - 다양한 URL 패턴 : 정수, 년/월/일, slug
 - path, re_path(url)
