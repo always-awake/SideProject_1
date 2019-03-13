@@ -62,8 +62,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'sideproject.urls'
 
+# 여러 템플릿 엔진 사용가능
+# 단, 하나의 render수행 시에, 하나의 템플릿 엔진만 선택적으로 사용
 TEMPLATES = [
     {
+        # 장고의 빌트인 백엔드
+        # 장고에서의 일반적인 템플릿 엔진
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
