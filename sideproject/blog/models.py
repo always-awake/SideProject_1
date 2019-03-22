@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from sideproject.utils import uuid_name_upload_to
 
 
 class Post(models.Model):
@@ -9,6 +10,7 @@ class Post(models.Model):
         related_name='posts')
     title = models.CharField(max_length=100)
     content = models.TextField()
+    photo = models.ImageField(blank=True, upload_to=uuid_name_upload_to)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     tag_set = models.ManyToManyField('Tag', blank=True)

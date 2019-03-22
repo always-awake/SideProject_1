@@ -1,10 +1,11 @@
 from django.db import models
-
+from sideproject.utils import uuid_name_upload_to
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     price = models.PositiveIntegerField()
+    photo = models.ImageField(blank=True, upload_to=uuid_name_upload_to)
     is_publish = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
