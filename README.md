@@ -1,18 +1,10 @@
 ## 장고 기본 학습
-<<<<<<< HEAD
 ### 01 개발환경 구축하기
-=======
-### 01 개발환경 구축하기 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - 웹프레임워크의 필요성
 - 장고 설치
 - 장고 프로젝트 생성하고 초기화하기
 
-<<<<<<< HEAD
 ### 02 장고의 주요 구성 요소
-=======
-### 02 장고의 주요 구성 요소 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - Function Based Views
 - Models
 - Templates
@@ -21,11 +13,7 @@
 ### 03 장고 앱
 - Tip: 앱의 규모가 커짐에 따라 models/views 모듈을 팩키지로 전환 -> 관리 용이
 
-<<<<<<< HEAD
 ### 04 VSCode 장고 디버깅 세팅하기
-=======
-### 04 VSCode 장고 디버깅 세팅하기 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - pipenv 실행시 디버깅: Command Palette 에서 Python: Select Interpreter 메뉴를 통해, 지정 가상환경 안의 인터프리터를 지정 -> 디버깅 진행
 
 ### 05 URLConf와 정규 표현식
@@ -33,11 +21,7 @@
 - 다양한 URL 패턴 : 정수, 년/월/일, slug
 - path, re_path(url)
 
-<<<<<<< HEAD
 ### 06 다양한 응답의 함수 기반 뷰 만들기
-=======
-### 06 다양한 응답의 함수 기반 뷰 만들기 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - What is View?
 - FBV & CBV
 - HttpRequest와 HttpResponse
@@ -46,7 +30,6 @@
 ### 07 적절한 HTTP 상태코드로 응답하기
 모든 웹서버는 현재 요청에 대한 처리결과를 숫자코드로서 응답해야 합니다. 이것이 HTTP 상태코드입니다.
 
-<<<<<<< HEAD
 ### 08 장고 쉘
 - 장고 쉘을 사용하기 위해 -> 초기 세팅 필요(os, sys ...)
 
@@ -54,15 +37,6 @@
 - Django ORM(Object Relational Mapping) = Model 
 
 ### 10 장고 모델 필드
-=======
-### 08 장고 쉘 
-- 장고 쉘을 사용하기 위해 -> 초기 세팅 필요(os, sys ...)
-
-### 09 장고 모델 (ORM) 
-- Django ORM(Object Relational Mapping) = Model 
-
-### 10 장고 모델 필드 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - Primary Key: AutoField
 - 문자열: charField, TextField, SlugField
 - 날짜/시간: DateTimeField
@@ -74,11 +48,7 @@
 - 등...
 - 최대한 타이트하게 필드 지정하기 / 다양한 validator 사용하기
 
-<<<<<<< HEAD
 ### 11 마이그레이션을 통한 데이터베이스 스키마 관리
-=======
-### 11 마이그레이션을 통한 데이터베이스 스키마 관리 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - 마이그레이션 파일은 모델의 변화내역을 누적하는 역할 -> 이미 적용된 migration 파일 삭제하면 안됨
 - 마이그레이션 파일이 너무 많아질 경우, squashmigrations 명령으로 다수의 마이그레이션 파일 통합 가능
 
@@ -88,31 +58,19 @@
 - @admin.register(모델명) 데코레이터를 이용해 Admin 페이지에 모델 등록
 - list_display, list_display_links, search_fields 등의 속성을 이용해 Admin 페이지 커스터마이징
 
-<<<<<<< HEAD
 ### 13 모델을 통한 데이터 조회
-=======
-### 13 모델을 통한 데이터 조회 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - SQL을 생성해주는 인터페이스
 - 순회가능한 객체 (Iterable)
 - QuerySet은 Chaining 지원
 - QuerySet을 만드는 동안에는 DB접근x -> 실제로 데이터가 필요한 시점(출력, list(), tuple(), for문과 함께 등)에 접근 (QuerySet의 Lazy한 특성)
 - OR조건으로 filter -> from django.db.models import Q / ~.filter(Q(~) | Q(~))
 
-<<<<<<< HEAD
 ### 14 모델을 통한 데이터 생성/수정/삭제
-=======
-### 14 모델을 통한 데이터 생성/수정/삭제 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - SQL이 가급적 적게 생성되는 코드 선택하기 (병목현상의 주요 요인은 데이터베이스)
 - 데이터를 일괄처리할 경우, QuerySet 함수를 사용하는 것이 좋음
 - .save() 함수: 인스턴스 pk가 존재x -> INSERT / 인스턴스 pk가 존재o -> UPDATE (장고 내부 처리)
 
-<<<<<<< HEAD
 ### 15 관계를 표현하는 모델 필드
-=======
-### 15 관계를 표현하는 모델 필드 
->>>>>>> dc60d6d10a665b131b794b00869134260034f067
 - ManyToManyField의 경우, blank=True 설정, 사용하는 쪽에서 ManyToManyField 선언이 가독성에 좋음 
 
 ### 16 django-debug-toolbar를 통한 SQL 디버깅
@@ -203,7 +161,122 @@
   - CDN(Content Delivery Network)
 
 ### 26 media 파일을 다루는 방법
-- media 파일이란?
-- FileField/ImageField를 통해 저장한 모든 파일
-- (중요) DB필드에는 저장 경로를 저장하며, 파일은 파일 스토리지에 저장
+#### media 파일이란?
+- FileField/ImageField를 통해 저장한 모든 파일 (다른 언어의 프레임워크에서는 없는 용어)
+- (중요) DB필드에는 저장 경로를 저장하며, 파일은 별도의 파일 스토리지에 저장
 - 프로젝트 단위로 저장/서빙
+#### Media 파일 처리 순서
+- HttpRequest.FILES(request의 인자)를 통해 파일이 전달
+- View 로직이나 Form 로직을 통해, 유효성 검증을 수행
+- FileField/ImageField에 "경로(문자열)"을 저장
+- settings.MEDIA_ROOT 경로의 하위 파일을 저장 (이 이외의 경로에는 파일을 저장하지 않는다.)
+#### settings.py의 Media 파일 관련 설정
+- 기본적으로 MEDIA관련 설정인 MEDIA_URL = ""/MEDIA_ROOT="" 인 상태로 media 파일을 업로드 한다면, manage.py 파일과 같은 경로에 저장됨 -> 따라서 필수적으로 media 파일 관련 설정을 해야함
+- MEDIA_URL: 각 media 파일에 대한 URL Prefix
+  - 필드명.url 속성에 의해서 참조되는 설정
+- MEDIA_ROOT: 파일 필드를 통한 저장 시, 실제 파일을 저장할 ROOT 경로
+#### FileField와 ImageField
+- FileField
+  - File Storage API를 통해 파일을 저장 (장고에서는 로컬 File System Storage만 지원, django-storages를 통해 AWS S3, Azure storage, Google Cloud storage 등으로의 확장 지원)
+  - 해당 필드를 옵션 필드로 두고자 할 경우, blank=True 옵션 적용
+- ImageField (FileField 상속)
+  - Pillow(이미지 처리 라이브러리)를 통해 이미지 width/height 획득
+  - Pillow를 설치하지 않을 경우, ImageField를 추가한 makemigrations 수행 실패함
+- 위 필드를 상속받은 커스텀 필드를 만들 수 있음 (ex. PDFField, ExcelField 등)
+#### 유용한 필드 옵션
+- blank 옵션
+  - 업로드 옵션 처리 여부 (필수 옵션 여부)
+  - 디폴트: False
+- upload_to 옵션
+  - settings.MEDIA_ROOT 경로 내 어디에 저장될지 지정하는 옵션
+  - 디폴트: 파일명 그대로 settings.MEDIA_ROOT에 정리 되지 않고 저장됨
+  - 동일 파일명으로 저장 시, 기존 파일이 오버라이트되지 않고, 파일명에 더미 문자열을 붙여 파일 덮어쓰기 방지
+- upload_to 인자
+  - 파일 저장 시, upload_to 함수를 호출하여, media 파일 저장 경로를 계산
+  - 몇 개의 파일을 저장한 후에 upload_to 인자를 변경한다고 해서, 이전에 DB내 기존 upload_to 인자의 경로로 저장됬던 미디어 파일들이 새로운 upload_to 인자 경로에 저장되지 않는다. 때문에 기존 경로에 저장됬던 파일들을 새로운 upload_to 경로로 재업로드해야함
+  - 문자열 인자: 파일을 저장할 "중간 디렉토리 경로"로서 활용 (ex. blog)
+  - 함수 인자: "중간 디렉토리 경로" 및 "파일명"까지 결정 가능
+#### uuid를 통한 파일명 정하기 예시 (upload_to의 인자를 함수로)
+```
+import os
+from uuid import uuid4
+from django.utils import timezone
+def uuid_name_upload_to(instance, filename):
+   app_label = instance.__class__._meta.app_label # 앱별로
+   cls_name = instance.__class__.__name__.lower() # 모델 별로
+   ymd_path = timezone.now().strftime('%Y/%m/%d’) # 업로드 하는 년/월/일 별로
+   uuid_name = uuid4().hex
+   extension = os.path.splitext(filename)[-1].lower() # 확장자 추출하고, 소문자로 변환 return '/'.join([
+      app_label,
+      cls_name,
+      ymd_path,
+      uuid_name[:2],
+      uuid_name + extension,
+])
+```
+#
+#### os.path.splitext(filename)
+- 입력 받은 경로를 확장자 부분과 그 외의 부분으로 나눕니다.
+- 단순한 문자열 연산이므로 실제 파일의 존재 여부는 확인하지 않습니다.
+```
+In: splitext('C:\\Python30\\python.exe')
+Out: ('C:\\Python30\\python', '.exe') # 튜플로 리턴
+```
+#
+#### Tip
+- 성능을 위해, 한 디렉토리에 너무 많은 파일들이 저장되지 않도록 조정하기
+- 한 디렉토리에 파일을 너무 많이 몰아둘 경우, OS 파일 찾기 성능이 저하됨
+- 디렉토리 깊이가 깊어지는 것은 성능에 큰 영향이 없음
+- 필드 별로, 다른 디렉토리 저장경로를 갖는 것이 좋은
+  - 대안1: 필드 별로 다른 디렉토리에 저장 
+  - photo = models.ImageField(upload_to=“blog”)
+  - photo = models.ImageField(upload_to=“blog/photo”)
+  - 대안2: 업로드 시간대 별로 다른 디렉토리에 저장
+  - upload_to에서 strftime 포맷팅을 자동 지원
+  - photo = models.ImageField(upload_to=“blog/%Y/%m/%d”)
+- 아마존 S3, Azure Storage 등에서도 적용하면 좋은 Tip
+#### 파일 업로드 시에 HTML Form enctype
+- form method는 필히 POST로 지정
+  - GET의 경우 enctype이 "application/x-www-form-urlencoded"로 고정
+- form enctype을 필히 "multipart/form-data"로 지정 -> 지정하지 않는다면, 브라우저는 파일을 서브하지 않고, 파일명만 서브한다. 즉, 파일이 업로드가 되지 않음
+  - "application/x-www-form-urlencoded"의 경우, 파일명만 전송
+  - "multipart/form-data"을 입력하는 도중에 오타가 있으면, "application/x-www-form-urlencoded"로 지정되어, 파일명만 전송
+```
+<form action="" method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+   <table>
+      {{ form.as_table }}
+   </table>
+   <input type="submit">
+</form>
+```
+
+#### 템플릿에서 media URL 처리 예시
+- 필드의 .url 속성 활용
+  - 내부적으로 settings.MEDIA_URL과 조합하여 처리함
+  `<img src="{{ post.photo.url }}" %}" />`
+  - 필드에 저장된 경로에 파일이 없을 경우, .url 계산에 실패함 때문(ValueError: no file associated with it.)에 안전하게 필드명 저장유무를 체크해주는 것이 좋음
+  ```
+   {% if post.photo %}
+      <img src="{{ post.photo.url }}" %}" />
+   {% endif %}
+  ```
+  - 출력: `/media/shop/item/2019/03/22/9f/9fcb448231314cd6ba3a04422c6ceefe.png`
+- 참고: 파일 시스템 상의 절대 경로가 필요하다면, .path 속성을 활용
+  - 출력: `/Users/leemirim/Documents/SideProject_1/sideproject/media/shop/item/2019/03/22/9f/9fcb448231314cd6ba3a04422c6ceefe.png` 
+  - 오직 로컬에서만 유효
+
+
+#### 개발환경에서의 media 파일 서빙
+- static 파일과 다르게, 장고 개발 서버에서 서빙을 지원하지 않음
+- 개발 편의성 목적으로 url.py에 직접 서빙 Rule을 추가
+
+#### File Upload Handler
+- 파일 크기가 2.5MB 이하일 경우
+  - 파일은 메모리에 담겨 전달됨
+  - MemoryFileUploadHandler
+- 파일 크기가 2.5MB 초과일 경우
+  - 디스크에 담겨 전달
+  - TemporaryFileUploadHandler
+- 관련 설정
+  - settings.FILE_UPLOAD_MAX_MEMORY_SIZE (디폴트 설정 값: 2.5MB)
