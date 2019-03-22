@@ -1,0 +1,1 @@
+console.log('loaded sideproject/static/main.js');
