@@ -69,7 +69,9 @@ TEMPLATES = [
         # 장고의 빌트인 백엔드
         # 장고에서의 일반적인 템플릿 엔진
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'sideproject', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,6 +135,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'sideproject', 'static'),
+]
 
 # django-debug-toolbar 관련 설정
 INTERNAL_IPS = ['127.0.0.1']
