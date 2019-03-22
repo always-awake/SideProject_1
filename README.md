@@ -6,7 +6,6 @@
 - 장고 프로젝트 생성하고 초기화하기
 
 ### 02 장고의 주요 구성 요소 
->>>>>>> 548cf7a8c938d91f08ecb7a48f3e91fa973ba4d9
 - Function Based Views
 - Models
 - Templates
@@ -51,7 +50,6 @@
 - 최대한 타이트하게 필드 지정하기 / 다양한 validator 사용하기
 
 ### 11 마이그레이션을 통한 데이터베이스 스키마 관리 
->>>>>>> 548cf7a8c938d91f08ecb7a48f3e91fa973ba4d9
 - 마이그레이션 파일은 모델의 변화내역을 누적하는 역할 -> 이미 적용된 migration 파일 삭제하면 안됨
 - 마이그레이션 파일이 너무 많아질 경우, squashmigrations 명령으로 다수의 마이그레이션 파일 통합 가능
 
@@ -62,7 +60,6 @@
 - list_display, list_display_links, search_fields 등의 속성을 이용해 Admin 페이지 커스터마이징
 
 ### 13 모델을 통한 데이터 조회 
->>>>>>> 548cf7a8c938d91f08ecb7a48f3e91fa973ba4d9
 - SQL을 생성해주는 인터페이스
 - 순회가능한 객체 (Iterable)
 - QuerySet은 Chaining 지원
@@ -70,13 +67,11 @@
 - OR조건으로 filter -> from django.db.models import Q / ~.filter(Q(~) | Q(~))
 
 ### 14 모델을 통한 데이터 생성/수정/삭제 
->>>>>>> 548cf7a8c938d91f08ecb7a48f3e91fa973ba4d9
 - SQL이 가급적 적게 생성되는 코드 선택하기 (병목현상의 주요 요인은 데이터베이스)
 - 데이터를 일괄처리할 경우, QuerySet 함수를 사용하는 것이 좋음
 - .save() 함수: 인스턴스 pk가 존재x -> INSERT / 인스턴스 pk가 존재o -> UPDATE (장고 내부 처리)
 
 ### 15 관계를 표현하는 모델 필드 
->>>>>>> 548cf7a8c938d91f08ecb7a48f3e91fa973ba4d9
 - ManyToManyField의 경우, blank=True 설정, 사용하는 쪽에서 ManyToManyField 선언이 가독성에 좋음 
 
 ### 16 django-debug-toolbar를 통한 SQL 디버깅
