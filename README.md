@@ -281,3 +281,23 @@ Out: ('C:\\Python30\\python', '.exe') # 튜플로 리턴
   - TemporaryFileUploadHandler
 - 관련 설정
   - settings.FILE_UPLOAD_MAX_MEMORY_SIZE (디폴트 설정 값: 2.5MB)
+
+### 개발 환경에서 static 캐싱 무효화
+#### Private browser caches
+- 브라우저 단에서는 컨텐츠를 캐싱하여, 매번 서버로 컨텐츠를 요청하지 않고, 캐싱된 컨텐츠를 사용함으로써 페이지 렌더링 시간을 단축시킵니다.
+- 캐싱 Key: 요청 URL (URL 주소를 갖고 각각의 캐싱 컨텐츠를 구분/ex. 이미지 url)
+- 캐싱 만료 정책: Cache-Control 헤더
+#
+#### Tip: 종종 수정 이전 내역이 브라우저에 캐싱되어, 변경된 내역이 반영되지 않을 경우, 변경된 내역이 반영되기 하려면?
+- 브라우저의 캐시 내역을 강제로 비우기 (크롬 브라우저의 "강력 새로 고침")
+  - 윈도우: Ctrl + Shift + R
+  - 맥: Command + Shift + R
+- 해당 정적 파일 응답에서 Cache-Control 헤더 조절
+  - 개발 서버에 한해서 Cache 기능을 사용하지 않게 하기
+  - 캐싱 만료 시간을 짧게 주기
+- 해당 정적 파일의 파일명을 변경 (비현실적인 방법)
+- 해당 정적 파일, 요청 URL에 대해 Dummy QueryStrin(주소 뒤에 붙는 인자)을 추가
+  - Query String(주소? 뒤에 붙는 인자) 값이 변경되면, 브라우저에서는 새로운 리소스로 인식 
+  - 웹브라우저는 query string이 있는 것과 없는것은 서로 다른 url로 인식=새로운 캐싱 Key로 인식
+  - 웹 프론트엔드에서 같은 URL로 Ajax 요청시마다 dummy QueryString을 붙이는 것과 같은 논리
+  - (ex. 자동완성 기능: 사용자가 글씨를 쓸 때마다 dummy QueryString를 붙여 매번 브라우저 캐싱을 무효화)
