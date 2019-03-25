@@ -301,3 +301,49 @@ Out: ('C:\\Python30\\python', '.exe') # 튜플로 리턴
   - 웹브라우저는 query string이 있는 것과 없는것은 서로 다른 url로 인식=새로운 캐싱 Key로 인식
   - 웹 프론트엔드에서 같은 URL로 Ajax 요청시마다 dummy QueryString을 붙이는 것과 같은 논리
   - (ex. 자동완성 기능: 사용자가 글씨를 쓸 때마다 dummy QueryString를 붙여 매번 브라우저 캐싱을 무효화)
+#
+### 31 다양한 구동환경을 위한 settings.py/requirements.txt 분기
+#### requirements.txt
+- pip에서는 설치할 패키지 목록을 파일을 통해 지정 가능하도록 지원
+  - 일반적인 파일명이 requirements.txt (다른 파일명/경로여도 상관없음)
+  - pip install -r requirements.txt
+  - pip 옵션: -r (이 옵션이 없다면, 설치해야할 패키지 명을 모두 작성해 설치해야함)
+  - 해로쿠 지원: 자동으로 requirements.txt 이름인 파일을 찾아 파일 속 나열되어 있는 패키지들을 자동 설치
+
+#### 구동환경에 따라 다양한 requirements를 만들어야함 (기본 구조)
+- requirements.txt
+- reqs 디렉토리 
+  - 공통
+  - 개발용  
+  - 서비스 2.0 개발용  
+  - 배포용(공통)
+  - 배포용 (Azure)/배포용(AWS)/배포용(Heroku)
+
+#### settings 란?
+- 다양한 프로젝트 설정을 담는 파이썬 소스 파일
+  - 장고 앱 설정
+  - DB 설정, 
+  - 캐시 설정 등등
+- 디폴트 설정(django/conf/global_settings.py)을 기본으로 깔고, 지정 settings를 통해 필요한 설정을 재정의 (주의: settings.py에서 설정에 오타가 존재한다면, 재정의가 되지 않고 global_settings.py 그대로 구동됨)
+- 장고 프로젝트 구동 시에 필수적으로 'DJANGO_SETTINGS_MODULE' 환경 변수를 통해, settings의 위치를 알려줘야함
+#### os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sideproject.settings')
+- manage.py와 wsgi.py 파일 내 코드
+- 기본 구조
+```
+dict.setdefault(key, default=None)
+```
+- 위 코드는 아래와 같은 동작을 함
+```
+if 'DJANGO_SETTINGS_MODULE' not in os.encirons: 
+   os.environs['DJANGO_SETTINGS_MODULE'] = 'sideproject.settings'
+```
+#### settings를 지정하는 2가지 방법
+- DJANGO_SETTINGS_MODULE 환경변수로 지정
+  - 주의) OS마다/배포하는 방법마다 환경 변수 세팅 방법이 다름
+  - 별도로 지정하지 않으면, manage.py/wsgi.py에 세팅된 설정값(default값)이 적용
+- manage.py 명령에서 --settings 옵션을 통해 지정
+  - 환경 변수 설정에 우선
+  - 쉘> python manage.py 명령 --settings=sideproject.settings.prod
+
+#### settings를 파이썬 패키지로 만들기
+- settings.py 내 BASE_DIR 설정은 상대경로로 프로젝트 ROOT 경로를 계산 (주의!!!)
