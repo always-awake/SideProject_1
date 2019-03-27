@@ -302,6 +302,37 @@ Out: ('C:\\Python30\\python', '.exe') # 튜플로 리턴
   - 웹 프론트엔드에서 같은 URL로 Ajax 요청시마다 dummy QueryString을 붙이는 것과 같은 논리
   - (ex. 자동완성 기능: 사용자가 글씨를 쓸 때마다 dummy QueryString를 붙여 매번 브라우저 캐싱을 무효화)
 #
+### URL Reverse 를 통해 유연하게 URL 생성하기
+#### URL Dispatcher
+- urls.py 변경만으로 '각 뷰에 대한 URL'이 변경되는 유연한 URL 시스템
+#### URL Reverse의 장점
+- 개발자가 일일이 URL을 계산하지 않아도 됨
+- URL이 변경되더라도, URL Reverse가 변경된 URL을 추적(누락되지 않음)
+#### URL Reverse를 수행하는 4가지 함수
+- url 템플릿 태그 (문자열 URL)
+  - 내부적으로 reverse 함수 사용
+- reverse 함수 (문자열 URL)
+  - from django.core.urlresolvers import reverse
+  - 매칭 URL이 없으면 NoReverseMatch 예외 발생
+- resolve_url 함수 (문자열 URL)
+  - from django.shortcuts import resolve_url
+  - 매칭 URL이 없으면, '인자 문자열'을 그대로 리턴
+  - 내부적으로 reverse 함수를 사용
+- redirect 함수 (HttpResponse 응답 301 or 302)
+  - from django.shortcuts import redirect
+  - view 함수 내에서 특정 url로 이동 하고자 할 때 사용
+  - 매칭 URL이 없으면, '인자 문자열'을 그대로 URL로 사용
+  - 내부적으로 resolve_url 함수를 사용
+#
+- Tip: 모델 클래스 내 get_absolute_url 멤버 함수 이용하기
+#
+#### 그 외 활용
+- CreateView / UpdateView
+  - success_url을 제공하지 않을 경우, 해당 model instance의 get_absolute_url 주소로 이동이 가능한지 체크하고, 이동이 가능할 경우 이동
+  - 생성/수정하고나서 Detail 화면으로 이동하는 것은 자연스러운 것!
+- 특정 모델에 대한 Detail뷰를 작성할 경우
+  - Detail뷰에 대한 URLConf설정을 하자마자, 필수적으로 get_absolute_url설정을 해주는 것이 좋음 (코드가 굉장히 간결해짐)
+
 ### 31 다양한 구동환경을 위한 settings.py/requirements.txt 분기
 #### requirements.txt
 - pip에서는 설치할 패키지 목록을 파일을 통해 지정 가능하도록 지원
@@ -347,3 +378,4 @@ if 'DJANGO_SETTINGS_MODULE' not in os.encirons:
 
 #### settings를 파이썬 패키지로 만들기
 - settings.py 내 BASE_DIR 설정은 상대경로로 프로젝트 ROOT 경로를 계산 (주의!!!)
+
