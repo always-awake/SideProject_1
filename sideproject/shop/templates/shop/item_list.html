@@ -16,7 +16,7 @@
         <hr/>
         {% for item in item_list  %}
         <div>
-            <a href="{% url 'shop:detail' item.id %}"><h3>{{ item.name }}</h3></a>
+            <a href="{{item.get_absolute_url}}"><h3>{{ item.name }}</h3></a>
             <h4>가격 {{ item.price }}</h4>
             {% if item.description %}
                 <p>{{ item.description }}</p>
