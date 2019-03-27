@@ -9,6 +9,7 @@ name = "pypi"
 
 django = "*"
 pylint-django = "*"
+"psycopg2" = "*"
 
 
 [dev-packages]
