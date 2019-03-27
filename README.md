@@ -379,3 +379,103 @@ if 'DJANGO_SETTINGS_MODULE' not in os.encirons:
 #### settings를 파이썬 패키지로 만들기
 - settings.py 내 BASE_DIR 설정은 상대경로로 프로젝트 ROOT 경로를 계산 (주의!!!)
 
+### 33 다양한 데이터 베이스 엔진 연동하기
+- 장고 프로젝트의 기본 데이터베이스는 SQLite
+- SQLite는 파일 데이터베이스이며 개발용으로 주로 사용
+- 실제 서비스에서는 별도의 데이터베이스 서버를 활용
+- MySQL, PostgreSQl 데이터베이스 서버 사용
+
+#### Datavases in Django
+- 장고 기본에서 다양한 RDB(관계형 DB) 백엔드 지원
+  - squlite3, mysql, postgresql 등
+  - 관련 DB API 드라이버 추가 설치가 필요
+- 데이터베이스와의 디폴트 인코딩는 'UTF-8'
+- 멀티 데이터베이스 지원
+
+#### SQLite
+- 파일 기반의 데이터베이스
+  - 싱글 유저 사용에 적합(실제 서비스에는 부적합) -> 실제 서비스에서는 다른 DB서버 필수
+  - 여러명의 유저가 동시에 정보를 수정하게되면 '락'이 걸림
+  - 다른 데이터베이스 서버들보다는 다소 너그러운(?) 데이터베이스 엔진
+- 파이썬에서 기본 지원
+  - 개발 초기에 보다 바르게 개발을 시작할 수 있음
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+```
+#### MySQL
+- 장고에서 5.6 이상을 지원 
+- 스토리지 엔진
+  - InnoDB(장고 디폴트)
+  - MyISAM
+- DB API 드라이버
+  - mysqlclient: 장고 공식 문서에서 추천 | 설치: pip install mysqlclient
+  - MySQL Connector/Python
+  - PyMySQL: Pure Python으로 개발
+- MySQL 서버 구동 방법
+  - mysql.com에서 다운받아 로컬에 설치
+  - 클라우드 관리형 서비스 사용
+  - 로컬에서 Docker로 설치: 현재 디렉토리에서 빈 data_mysql 디렉토리 생성 후 아래 명령어 수행
+```
+docker run \
+   --rm -it \
+   --publish 3306:3306 \
+   --env MYSQL_DATABASE="sideproject_db" \
+   --env MYSQL_ROOT_PASSWORD="admin12345" \
+   --volume `qwd`/data_mysql:/var/lib/mysql \
+   mysql:5
+```
+   
+#### PostgreSQL
+- 장고의 FullFeatures(모든 기능 지원)를 지원하는 DB
+- 장고에서 PostgreSQL만을 위한 모델 필드도 지원
+  - ArrayField
+  - HStoreField
+  - JSONField (NoSQL의 특성)
+  - 각종 RangeFields 등
+- 9.4이상을 지원
+- DB API 드라이버
+  - psycopg2
+- PostgreSQL 서버 구동
+  - 로컬에서 Docker로 설치
+```
+docker run \
+    --rm -it \
+    --publish 5432:5432 \
+    --env POSTGRES_PASSWORD="admin12345" \
+    --volume `pwd`/data_pg:/var/lib/postgresql/data \
+    postgres:11
+```
+- settings.py 설정 
+```
+DATABASE = {
+   'default': {
+      'ENGINE': 'django.db.backends.postgresql',
+      'NAME': 'postgres',
+      'USER': 'leemirim',
+      'PASSWORD': 'admin12345',
+      'HOST': '127.0.0.1',
+   }
+}
+```
+#### Oracle
+- 12.1 이상의 Oracle Database Server를 지원
+- DB API 드라이버
+  - cx_Oracle
+- settings.py 설정
+```
+DATABASES = {
+   'default': {
+      'ENGINE': 'django.db.backends.oracle',
+      'NAME': 'xe',
+      'USER': 'a_user',
+      'PASSWORD': 'a_password',
+      'HOST': 'dbprod01ned.mycompany.com',
+      'PORT': '1540',
+   }
+}
+```
